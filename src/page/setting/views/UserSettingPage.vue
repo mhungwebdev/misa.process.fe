@@ -365,7 +365,7 @@ export default {
      * @param {*} userID của user muốn xóa
      */
     handleShowConfirmDeleteUser(userID) {
-      const userDelete = this.users.find((user) => (user.UserID = userID));
+      const userDelete = this.users.find((user) => user.UserID == userID);
       this.nameUserDelete = userDelete.FullName.FullName;
       this.idUserTarget = userID;
     },

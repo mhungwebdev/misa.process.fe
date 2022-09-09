@@ -22,6 +22,7 @@ export const store = createStore({
       departments:[],
       //Dữ liệu vị trí công việc
       jobPositions:[],
+      timerToast:null
     }
   },
 
@@ -35,6 +36,10 @@ export const store = createStore({
       state.toastMsg = message
       state.typeToast = type
       state.isShowToast = true
+
+      if(state.timerToast)
+        clearTimeout(state.timerToast)
+
       setTimeout(() => {
         state.isShowToast = false
       }, 3000)

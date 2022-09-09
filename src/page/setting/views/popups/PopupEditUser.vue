@@ -90,9 +90,6 @@ export default {
             required:true
         }
     },
-    mounted(){
-        document.getElementById("msp-popup-edit").querySelector(".msp-checkbox-container div[tabindex]").focus()
-    },
     methods: {
         /**
          * Xác định đối tượng được check không
