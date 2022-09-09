@@ -1,0 +1,10 @@
+.msp-setting-page-container {
+    
+}
+
+.msp-setting-grid {
+    padding: 16px 24px;
+    width: calc(100% - 200px);
+    max-width: calc(100% - 200px);
+    box-sizing: border-box;
+}

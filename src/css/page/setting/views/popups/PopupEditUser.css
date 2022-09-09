@@ -1,0 +1,71 @@
+#msp-popup-edit {
+    width:600px
+}
+
+#msp-popup-edit .msp-popup-header,#msp-popup-insert-multi .msp-popup-header {
+    padding:18px 24px 0px
+}
+
+.msp-popup-update-title {
+    letter-spacing: 0.576px;
+    font-size: 24px;
+    color: rgb(33, 33, 33);
+    font-weight: 500;
+}
+
+.msp-edit-user {
+    padding: 24px;
+}
+
+.msp-edit-user-info{
+
+}
+
+.msp-edit-user-avatar{
+    width: 66px;
+    min-width: 66px;
+    height: 66px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.msp-edit-user-text{
+
+}
+
+.msp-edit-user-name{
+
+}
+
+.msp-edit-user-email{
+    margin: 4px 0px;
+}
+
+.msp-edit-user-info-job{
+
+}
+
+.msp-edit-user-role-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.msp-list-user-list-role {
+    margin-bottom: 16px;
+}
+
+.msp-role-item {
+    width: 276px;
+    min-width: 276px;
+    padding: 4px !important;
+}
+
+
+.msp-button-cancel {
+    margin-right: 12px;
+}
+
+.msp-button-update {
+    margin-right: 36px;
+}

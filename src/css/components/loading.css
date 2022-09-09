@@ -1,0 +1,30 @@
+.msp-loading {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #fff;
+    opacity: .5;
+    z-index: 10;
+}
+
+@keyframes spinLoading {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.msp-icon-loading {
+    border: 6px solid steelblue;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    border-bottom-color: #fff !important;
+    animation: spinLoading .5s linear infinite;
+    transition: all .05s ease-in-out;
+}

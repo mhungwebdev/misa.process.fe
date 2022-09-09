@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+    <g transform="translate(61 -68)">
+      <rect width="36" height="36" rx="8" transform="translate(-61 68)" fill="#e6e6e6"/>
+      <g transform="translate(-74 62)">
+        <rect width="24" height="24" transform="translate(19 12)" fill="none"/>
+        <g transform="translate(23 16)">
+          <rect width="4.136" height="4.104" rx="1.021" fill="#00a551"/>
+          <rect width="4.136" height="4.104" rx="1.042" transform="translate(5.932)" fill="#85c340"/>
+          <rect width="4.136" height="4.104" rx="1.078" transform="translate(11.864)" fill="#be1e2d"/>
+          <rect width="4.136" height="4.104" rx="1" transform="translate(0 5.948)" fill="#1b75bb"/>
+          <rect width="4.136" height="4.104" rx="1.042" transform="translate(5.932 5.948)" fill="#faaf40"/>
+          <rect width="4.136" height="4.104" rx="1.026" transform="translate(11.864 5.948)" fill="#ed2f46"/>
+          <rect width="4.136" height="4.104" rx="1.104" transform="translate(0 11.896)" fill="#035b93"/>
+          <path d="M1.188,0H2.948A1.187,1.187,0,0,1,4.136,1.187V2.916A1.188,1.188,0,0,1,2.948,4.1H1.188A1.188,1.188,0,0,1,0,2.916V1.188A1.188,1.188,0,0,1,1.188,0Z" transform="translate(5.932 11.896)" fill="#faaf40"/>
+          <rect width="4.136" height="4.104" rx="1.042" transform="translate(11.864 11.896)" fill="#f6921e"/>
+        </g>
+      </g>
+    </g>
+  </svg>

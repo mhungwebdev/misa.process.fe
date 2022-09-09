@@ -1,0 +1,24 @@
+.msp-input-container{
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.msp-input-container-focus {
+    border-color:var(--input-hover-border-color);
+}
+
+.msp-input{
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding: 0px 4px;
+}
+
+.msp-input-container:hover {
+    border: 1px solid var(--input-hover-border-color);
+}

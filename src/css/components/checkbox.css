@@ -1,0 +1,61 @@
+.msp-checkbox-container{
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.msp-icon-square-uncheck {
+    width: 23px;
+    -webkit-mask-position: -532px 2px;
+    -moz-mask-position: -532px 2px;
+    -ms-mask-position: -532px 2px;
+    -o-mask-position: -532px 2px;
+    mask-position: -532px 2px;
+    background-color: #686c7b!important;
+}
+
+.msp-checkmark {
+    height: 26px;
+    width: 22px;
+    min-width: 22px;
+    min-height: 26px;
+    margin-right: 8px;
+    box-sizing: border-box;
+}
+
+.msp-checkmark:focus-visible {
+    background-color: var(--primary)!important;
+}
+
+.msp-checkmark:focus-visible ~ .msp-checkbox-label {
+    color: var(--primary)!important;
+}
+
+.msp-icon-square-check {
+    width: 20px;
+    -webkit-mask-position: -512px 2px;
+    -moz-mask-position: -512px 2px;
+    -ms-mask-position: -512px 2px;
+    -o-mask-position: -512px 2px;
+    mask-position: -512px 2px;
+    background-color: var(--primary)!important;
+}
+
+.msp-checkbox-label {
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.msp-checkbox-disabled > div:first-child {
+    opacity: .5;
+}
+
+.msp-checkbox-container:hover .msp-checkmark {
+    background-color: var(--primary)!important;
+}
+
+.msp-checkbox-container:hover .msp-checkbox-label {
+    color: var(--primary)!important;
+}

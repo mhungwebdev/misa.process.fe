@@ -1,0 +1,20 @@
+.msp-popup-container{
+    background-color: #fff;
+    border-radius: 6px;
+    min-height: 100px;
+    position: relative;
+    box-shadow: 0 0 10px rgb(0 0 0 / 18%);
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.msp-popup-content {
+    overflow: hidden;
+}
+
+.msp-popup-button-gr{
+    height: 60px;
+    min-height: 60px;
+    background-color: #f1f5f9;
+    width: 100%;
+}

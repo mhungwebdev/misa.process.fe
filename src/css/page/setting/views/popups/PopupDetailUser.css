@@ -1,0 +1,151 @@
+.msp-user-detail-wrapper {
+    padding: 24px 24px 0px;
+    box-sizing: border-box;
+}
+
+.msp-user-detail-header{
+    margin-bottom: 36px;
+}
+
+.msp-user-detail-header-left{
+    /* width: 16.6667%; */
+    margin-right: 20px;
+}
+
+.msp-user-detail-avatar{
+    width: 66px;
+    height: 66px;
+    min-width: 66px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.msp-user-detail-header-right > div{
+    height: 35px;
+    line-height: 35px;
+}
+
+.msp-user-detail-name{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.msp-user-detail-email{
+
+}
+
+.msp-user-detail-active-status{
+
+}
+
+.msp-user-detail-active-status-dot{
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    min-height: 8px;
+}
+
+.msp-user-detail-active-text{
+
+}
+
+.msp-user-detail-button:hover {
+    background-color: #fff;
+    color: #f90 !important;
+}
+
+.msp-user-detail-button:first-child {
+    margin-right: 12px;
+}
+
+.msp-user-detail-wrapper .msp-icon-x {
+    position: absolute;
+    top:24px;
+    right: 24px;
+}
+
+.msp-user-detail-title{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.msp-user-detail-field{
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 16px;
+}
+
+.msp-user-detail-label{
+    font-weight: 700;
+    width: 29.1667%;
+}
+.msp-user-detail-value{
+    height: 35px;
+    border-bottom: 1px solid rgb(231, 232, 233);
+    width: 50%;
+}
+
+.msp-user-detail-field:last-child {
+    margin-bottom: 20px;
+}
+
+.msp-user-detail-label-roles {
+    font-weight: 700;
+    letter-spacing: .14px;
+    color: #171b2a;
+    height: 48px;
+    border-bottom: 1px solid #e2e8f0;
+    box-sizing: border-box;
+    line-height: 48px;
+}
+
+.msp-user-detail-roles{
+    box-sizing: border-box;
+    max-height: calc(100vh - 510px);
+    overflow: auto;
+}
+
+.msp-user-detail-role{
+    height: 48px;
+    border-bottom: 1px solid #e2e8f0;
+    box-sizing: border-box;
+    line-height: 48px;
+    white-space: nowrap;
+}
+
+.msp-user-detail-role:hover {
+    background-color: #dbf4ff;
+}
+
+.padding-vertical-16 {
+    padding:0px 16px;
+}
+
+.msp-tooltip-close {
+    color: #fff;
+    position: absolute;
+    background-color: #3a3a3a;
+    top: 52px;
+    right: 11px;
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+}
+
+.msp-tooltip-close::after {
+    content: "";
+    position: absolute;
+    border:10px solid transparent;
+    border-bottom-width: 6px;
+    border-bottom-color: #3a3a3a;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#msp-popup-detail-user .msp-icon-x:hover ~ .msp-tooltip-close {
+    display: block;
+}

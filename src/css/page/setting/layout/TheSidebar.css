@@ -1,0 +1,32 @@
+.msp-the-sidebar-container{
+    min-width: 200px;
+    height: 100%;
+    padding-top: 16px;
+    background: white;
+}
+
+.msp-sidebar-item{
+    height: 44px;
+    padding-left: 24px;
+}
+
+.msp-sidebar-item-icon{
+    margin-right: 8px;
+}
+
+.msp-sidebar-item-text{
+    font-size: 14px;
+    color: #000;
+}
+
+.router-link-active {
+    background-color: var(--primary-bg);
+}
+
+.router-link-active .msp-sidebar-item-text {
+    color:var(--primary)
+}
+
+.router-link-active .msp-sidebar-item-icon {
+    background-color: var(--primary) !important;
+}

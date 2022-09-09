@@ -1,0 +1,36 @@
+#msp-popup-confirm-close-form {
+    background: rgb(255, 255, 255);
+    width: 415px;
+    min-width: 500px;
+}
+
+.msp-popup-header{
+    padding:18px 24px 0px;
+}
+
+.msp-popup-confirm-close-form-title{
+    letter-spacing: 0.576px;
+    font-size: 24px;
+    color: rgb(33, 33, 33);
+    font-weight: 500;
+}
+
+.msp-icon-close{
+
+}
+
+.msp-popup-confirm-close-form-msg{
+    padding:24px
+}
+
+.msp-button-cancel{
+
+}
+
+#msp-button-confirm-save-form {
+    margin-right: 24px;
+}
+
+#msp-button-not-save-form {
+    margin:0px 16px
+}

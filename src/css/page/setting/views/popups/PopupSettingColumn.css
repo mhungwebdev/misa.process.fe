@@ -1,0 +1,38 @@
+#msp-popup-setting-column {
+    position: fixed;
+    top: 172px;
+    right: 12px;
+    width: 314px;
+    z-index: 5;
+}
+
+#msp-popup-setting-column .msp-popup-header {
+    margin: 16px 16px 0px 16px;
+}
+
+.msp-setting-column{
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+
+.msp-setting-column > div:first-child {
+    padding: 0px 16px;
+}
+
+.msp-user-setting-list-colum{
+    margin-left: 16px;
+    margin-bottom: 12px;
+}
+
+.msp-setting-column-input {
+    margin-bottom: 12px;
+}
+
+.msp-button-cancel {
+    margin-right: 12px;
+}
+
+.msp-button-save-edit-column {
+    margin-right: 20px;
+}
+

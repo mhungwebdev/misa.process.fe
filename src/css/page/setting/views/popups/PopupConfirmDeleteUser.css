@@ -1,0 +1,36 @@
+#msp-popup-delete {
+    width: 500px;
+}
+
+.msp-popup-delete-title {
+    letter-spacing: 0.576px;
+    font-size: 24px;
+    color: rgb(33, 33, 33);
+    font-weight: 500;
+}
+
+#msp-popup-delete .msp-popup-header {
+    padding: 18px 24px 0px;
+}
+
+.msp-popup-delete-user-msg {
+    padding: 24px;
+}
+
+#msp-popup-delete .msp-icon-close, #msp-popup-insert-multi .msp-icon-close {
+    transform: translateX(8px);
+}
+
+.msp-button-cancel {
+    margin-right: 12px;
+}
+
+.msp-button-delete:hover {
+    background-color: #d81010 !important;
+    color: #fff;
+    border: 1px solid #d81010 !important;
+}
+
+.msp-button-delete {
+    margin-right: 24px;
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Group_32744" data-name="Group 32744" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+      <linearGradient id="linear-gradient" x1="0.083" y1="0.048" x2="0.891" y2="0.949" gradientUnits="objectBoundingBox">
+        <stop offset="0" stop-color="#887ee7"/>
+        <stop offset="1" stop-color="#3928d7"/>
+      </linearGradient>
+      <filter id="Ellipse_2104" x="30.291" y="13.9" width="18.583" height="18.583" filterUnits="userSpaceOnUse">
+        <feOffset dy="1" input="SourceAlpha"/>
+        <feGaussianBlur stdDeviation="0.5" result="blur"/>
+        <feFlood flood-opacity="0.161"/>
+        <feComposite operator="in" in2="blur"/>
+        <feComposite in="SourceGraphic"/>
+      </filter>
+      <filter id="Path_33835" x="22.5" y="33.935" width="34.165" height="34.165" filterUnits="userSpaceOnUse">
+        <feOffset dy="1" input="SourceAlpha"/>
+        <feGaussianBlur stdDeviation="0.5" result="blur-2"/>
+        <feFlood flood-opacity="0.161"/>
+        <feComposite operator="in" in2="blur-2"/>
+        <feComposite in="SourceGraphic"/>
+      </filter>
+    </defs>
+    <path id="App_Icon_Mask" data-name="App Icon Mask" d="M80,25.025c0-.956,0-1.911-.005-2.867-.005-.8-.015-1.609-.036-2.413a35.087,35.087,0,0,0-.461-5.255,17.7,17.7,0,0,0-1.647-5,16.8,16.8,0,0,0-7.345-7.345A17.72,17.72,0,0,0,65.512.5,35.119,35.119,0,0,0,60.256.041C59.451.02,58.647.011,57.841.005,56.887,0,55.931,0,54.975,0H25.025c-.955,0-1.911,0-2.865.005-.805.005-1.611.015-2.415.036A35.1,35.1,0,0,0,14.489.5,17.72,17.72,0,0,0,9.5,2.149,16.8,16.8,0,0,0,2.151,9.495a17.7,17.7,0,0,0-1.647,5,35.084,35.084,0,0,0-.461,5.255Q.011,20.951.007,22.159C0,23.115,0,24.069,0,25.025V54.975c0,.956,0,1.911.007,2.867q.006,1.206.036,2.413A35.084,35.084,0,0,0,.5,65.509a17.706,17.706,0,0,0,1.647,5A16.824,16.824,0,0,0,9.5,77.851,17.721,17.721,0,0,0,14.489,79.5a35.106,35.106,0,0,0,5.256.463c.8.021,1.609.031,2.415.036.955.005,1.911.005,2.865.005H54.975c.956,0,1.912,0,2.867-.005.805-.005,1.609-.015,2.415-.036a35.122,35.122,0,0,0,5.256-.463,17.721,17.721,0,0,0,4.993-1.645,16.824,16.824,0,0,0,7.345-7.344,17.707,17.707,0,0,0,1.647-5,35.087,35.087,0,0,0,.461-5.255c.021-.8.031-1.609.036-2.413C80,56.885,80,55.931,80,54.975Z" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_2104)">
+      <circle id="Ellipse_2104-2" data-name="Ellipse 2104" cx="7.791" cy="7.791" r="7.791" transform="translate(31.79 14.4)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_33835)">
+      <path id="Path_33835-2" data-name="Path 33835" d="M-80.319,332.011a15.826,15.826,0,0,0-15.014,15.945v11.5a3.71,3.71,0,0,0,3.71,3.71h2.6a3.712,3.712,0,0,0,3.712-3.712V348.187a5.72,5.72,0,0,1,5.394-5.8,5.566,5.566,0,0,1,5.737,5.563v11.579a3.632,3.632,0,0,0,3.632,3.632h2.675a3.711,3.711,0,0,0,3.71-3.71V347.583A15.583,15.583,0,0,0-80.319,332.011Z" transform="translate(119.33 -297.57)" fill="#fff"/>
+    </g>
+  </svg>

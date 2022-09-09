@@ -1,0 +1,190 @@
+#msp-popup-insert-multi .msp-popup-header{
+    padding: 18px 24px 0px;
+}
+
+#msp-popup-insert-multi .msp-icon-close-tooltip {
+    position: absolute;
+    z-index: 99;
+    padding: 5px 8px;
+}
+
+.msp-popup-insert-multi-title {
+    letter-spacing: 0.576px;
+    font-size: 24px;
+    color: rgb(33, 33, 33);
+    font-weight: 500;
+}
+
+#msp-popup-insert-multi {
+    min-width: calc(100% - 40px);
+    min-height: calc(100vh - 40px);
+    width: calc(100% - 40px);
+    height: calc(100vh - 40px);
+    max-width: calc(100% - 40px);
+    max-height: calc(100vh - 40px);
+}
+
+.msp-user-form-wrapper {
+    margin-top: 32px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    overflow: hidden;
+    height: calc(100% - 88px);
+}
+
+.msp-user-form-wrapper table{
+    border-collapse:collapse;
+    border: 1px solid var(--border-color);
+    overflow: auto;
+    display: block;
+    max-height: 100%;
+    position: relative;
+    border-radius: 2px;
+}
+
+.msp-user-form-wrapper table::-webkit-scrollbar {
+    width:4px;
+    height:6px;
+    margin-top:48px;
+} 
+
+.msp-user-form-wrapper table::-webkit-scrollbar-thumb {
+    background-color: #dbdbdbda;
+}
+
+.msp-user-form-wrapper table::-webkit-scrollbar-thumb:hover {
+    background-color: #8d8d8d;
+}
+
+.msp-user-form-wrapper table::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+    margin-top:48px;
+    border-radius: 2px;
+}
+
+.msp-user-form-wrapper table thead {
+    background-color: #f3f8ff!important;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.msp-user-form-wrapper table tbody {
+    height: calc(100% - 48px);
+}
+
+.msp-user-form-wrapper table thead tr th:not(.text-center) {
+    height: 48px;
+    box-sizing: border-box;
+    font-weight: 500;
+    padding:0px 10px;
+}
+
+.msp-user-form-wrapper table tbody td {
+    padding: 10px 10px;
+    background-color: #fff;
+}
+
+.msp-user-form-wrapper table th:first-child, .msp-user-form-wrapper table tbody td:first-child {
+    min-width: 60px;
+}
+
+.msp-user-form-wrapper table tbody td:nth-child(2) {
+    width: 100px;
+}
+
+.msp-user-form-wrapper table thead th {
+    position: relative;
+    white-space: nowrap;
+}
+
+.msp-user-form-wrapper table thead th::before{
+    content: "";
+    height: 20px;
+    width: 1px;
+    background-color: #e2e8f0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.msp-user-form-wrapper table thead th:first-child::before,.msp-user-form-wrapper table thead th:last-child::before{
+    background-color: transparent;
+}
+
+.msp-user-form-add-row{
+    margin-top: 10px;
+    width: fit-content;
+    position: absolute;
+}
+
+.msp-user-form-add-row-icon{
+    width: 24px;
+    height: 24px;
+    -webkit-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    -moz-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    -ms-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    -o-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    -webkit-mask-position: -168px 0;
+    -moz-mask-position: -168px 0;
+    -ms-mask-position: -168px 0;
+    -o-mask-position: -168px 0;
+    mask-position: -168px 0;
+    -webkit-mask-repeat: no-repeat;
+    -moz-mask-repeat: no-repeat;
+    -ms-mask-repeat: no-repeat;
+    -o-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background-color: #0c9cdd!important;
+    transform: scale(.5);
+}
+
+.msp-user-form-add-row-text{
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.msp-user-form-wrapper table tbody tr td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.msp-user-form-wrapper table tbody tr:hover td {
+    background-color: #dbf4ff;
+}
+
+.msp-user-form-wrapper table tbody td:last-child {
+    position: sticky;
+    right: -1px;
+    background-color: #dbf4ff;
+    display: none;
+}
+
+.msp-user-form-wrapper table tbody tr:hover td:last-child {
+    display: table-cell;
+}
+
+.msp-user-form-wrapper .msp-cell-control {
+    margin: 0px;
+}
+
+.msp-message-error {
+    font-size: 12px;
+    margin-top: 4px;
+    color: var(--text-error);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 120px;
+}
+
+.msp-message-error.field-email{
+    max-width: 200px;
+}
+
+.msp-button-cancel {
+    margin-right: 12px;
+}
