@@ -23,7 +23,7 @@
                     @click="$emit('closePopup')" 
                     class="msp-button-cancel" 
                     type="outline"
-                    label="Hủy" 
+                    :label="$t('message.textCancelButton')" 
                 />
 
                 <BaseButton 
@@ -40,7 +40,7 @@
                     @click="$emit('saveForm')" 
                     class="m-r-8"
                     id="msp-button-confirm-save-form" 
-                    label="Lưu" 
+                    :label="$t('message.textSaveForm')" 
                 />
             </template>
         </BasePopup>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { Resource } from '../../../../Resource/Resource';
+import { Resource } from '../../../Resource/Resource';
     export default {
         setup(){
             return {
@@ -59,5 +59,5 @@ import { Resource } from '../../../../Resource/Resource';
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupConfirmCloseForm.css);
+@import url('../../../css/page/setting/popups/PopupConfirmCloseForm.css');
 </style>

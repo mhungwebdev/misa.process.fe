@@ -1,3 +1,5 @@
+import { TypeSort } from "../Enum/Enum";
+
 export class CommonJS {
 
     /**

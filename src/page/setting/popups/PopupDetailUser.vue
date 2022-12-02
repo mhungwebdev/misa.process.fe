@@ -1,5 +1,5 @@
 <template>
-    <BasePopup :showButtonGr="false" id="msp-popup-detail-user">
+    <BasePopup @keydown.esc="$emit('closeUserDetail')" tabindex="1" :showButtonGr="false" id="msp-popup-detail-user">
         <template #main>
             <div v-if="userDetail" class="msp-user-detail-wrapper w-full h-full">
                 <div>
@@ -27,8 +27,14 @@
                             </div>
                         </div>
                         <div class="msp-user-detail-button-gr flex">
-                            <BaseButton class="msp-user-detail-button" textColor="#ff6333" borderColor="#f90"
-                                :type="TypeButton.OUTLINE" label="Cập nhật" @click="$emit('showFormEdit')" />
+                            <BaseButton 
+                                class="msp-user-detail-button" 
+                                textColor="#ff6333" 
+                                borderColor="#f90"
+                                :type="TypeButton.OUTLINE" 
+                                label="Cập nhật" 
+                                @click="$emit('showFormEdit')" 
+                            />
 
                             <BaseButton 
                                 class="msp-user-detail-button" 
@@ -70,12 +76,15 @@
 </template>
 
 <script>
-import { TypeButton } from '../../../../Enum/Enum';
+import { User } from '../../../Entities/User';
+import { TypeButton } from '../../../Enum/Enum';
 export default {
     props: {
+        //Loading user detail
         loading: Boolean,
+        //Thông tin detail của user
         userDetail:{
-            type:Object,
+            type:User,
             required:true
         }
     },
@@ -83,10 +92,13 @@ export default {
         return {
             TypeButton
         }
+    },
+    mounted() {
+        document.getElementById("msp-popup-detail-user").focus()
     }
 }
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupDetailUser.css);
+@import url('../../../css/page/setting/popups/PopupDetailUser.css');
 </style>

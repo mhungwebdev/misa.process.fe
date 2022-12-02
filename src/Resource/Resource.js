@@ -209,4 +209,9 @@ export class Resource {
     static insertSuccess(count){
         return `Thêm mới thành công ${count} người dùng.`
     }
+
+    ///Thông báo confirm delete
+    static messageConfirmDeleteUser(fullName){
+        return `Bạn có chắc chắn muốn xóa <b>${fullName}</b> khỏi ứng dụng AMIS Quy trình không?`
+    }
 }

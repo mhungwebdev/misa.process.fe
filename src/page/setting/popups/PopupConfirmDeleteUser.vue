@@ -1,5 +1,5 @@
 <template>
-    <BaseOverlay @keydown="e => {if(e.key =='Escape') $emit('closePopupDelete')}">
+    <BaseOverlay @keydown.esc="$emit('closePopupDelete')">
         <BasePopup id="msp-popup-delete">
             <template #header>
                 <div class="msp-popup-header flex align-items-center flex-between">
@@ -13,10 +13,7 @@
             </template>
 
             <template #main>
-                <div class="msp-popup-delete-user-msg">
-                    Bạn có chắc chắn muốn xóa <b>{{ nameUserDelete }}</b> khỏi ứng dụng AMIS Quy trình
-                    không?
-                </div>
+                <slot name="messageConfirmDelete"></slot>
             </template>
 
             <template #button-left>
@@ -24,7 +21,7 @@
                     @click="$emit('closePopupDelete')" 
                     class="msp-button-cancel" 
                     type="outline"
-                    label="Hủy" 
+                    :label="$t('message.textCancelButton')" 
                     @keydown="handleKeyDownBtnCancel"
                     :tabIndex="3"
                 />
@@ -34,7 +31,7 @@
                 <div tabindex="1" class="tab-again"></div>
                 <BaseButton 
                     @click="$emit('confirmDelete')" 
-                    @keydown="e => {if(e.key == 'Enter') $emit('confirmDelete')}"
+                    @keydown.enter="$emit('confirmDelete')"
                     :bgColor="'#e61d1d'" 
                     :borderColor="'#e61d1d'"
                     class="m-r-8 msp-button-delete" 
@@ -48,16 +45,14 @@
 
 <script>
 export default {
-    props:{
-        nameUserDelete:{
-            type: String,
-            required: true
-        }
-    },
     mounted(){
         document.getElementById("msp-popup-delete").querySelector(".msp-button-delete[tabindex]").focus()
     },
     methods:{
+        /**
+         * Xử lý key down button cancel 
+         * Author : mhungwebdev (5/9/2022)
+         */
         handleKeyDownBtnCancel(e){
             if(e.key == 'Enter')
                 this.$emit('closePopupDelete')
@@ -70,5 +65,5 @@ export default {
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupConfirmDeleteUser.css);
+@import url('../../../css/page/setting/popups/PopupConfirmDeleteUser.css');
 </style>

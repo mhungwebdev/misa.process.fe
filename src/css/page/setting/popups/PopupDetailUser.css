@@ -149,3 +149,7 @@
 #msp-popup-detail-user .msp-icon-x:hover ~ .msp-tooltip-close {
     display: block;
 }
+
+#msp-popup-detail-user:focus-visible {
+    outline: none;
+}

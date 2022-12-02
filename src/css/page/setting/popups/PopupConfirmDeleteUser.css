@@ -13,10 +13,6 @@
     padding: 18px 24px 0px;
 }
 
-.msp-popup-delete-user-msg {
-    padding: 24px;
-}
-
 #msp-popup-delete .msp-icon-close, #msp-popup-insert-multi .msp-icon-close {
     transform: translateX(8px);
 }

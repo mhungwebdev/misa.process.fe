@@ -1,5 +1,5 @@
 <template>
-    <BaseOverlay @keydown="e => {if(e.key == 'Escape') $emit('closeEditUser')}">
+    <BaseOverlay @keydown.esc="$emit('closeEditUser')">
         <BasePopup id="msp-popup-edit">
             <template #header>
                 <div class="msp-popup-header flex align-items-center flex-between">
@@ -46,7 +46,7 @@
                             @click="$emit('changeListRole', role)" 
                             class="msp-role-item" 
                             :tabIndex="index+1"
-                            @keydown="e => {if(e.key =='Enter') $emit('changeListRole', role)}"
+                            @keydown.enter="$emit('changeListRole', role)"
                         />
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     @click="$emit('closeEditUser')" 
                     class="msp-button-cancel" 
                     type="outline" 
-                    label="Hủy" 
+                    :label="$t('message.textCancelButton')" 
                     :tabIndex="$store.state.roles.length + 2"
                     @keydown="handleKeyDownBtnCancel"
                 />
@@ -69,22 +69,26 @@
                     :tabIndex="$store.state.roles.length + 1"
                     :disable="listRoleEdit.length == 0"
                     @click="$emit('saveEditUser')" 
-                    @keydown="e => {if(e.key == 'Enter') $emit('saveEditUser')}"
+                    @keydown.enter="$emit('saveEditUser')"
                     class="msp-button-update"
-                    label="Lưu" />
+                    :label="$t('message.textSaveForm')" />
             </template>
         </BasePopup>
     </BaseOverlay>
 </template>
 
 <script>
+import { User } from '../../../Entities/User'
 export default {
     props: {
+        //loading edit user
         loading:Boolean,
+        //Thông tin user
         userEdit:{
-            type:Object,
+            type:User,
             required:true
         },
+        // List những role được chọn
         listRoleEdit:{
             type:Array,
             required:true
@@ -120,5 +124,5 @@ export default {
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupEditUser.css);
+@import url('../../../css/page/setting/popups/PopupEditUser.css');
 </style>

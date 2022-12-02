@@ -3,7 +3,8 @@
     <div class="msp-user-setting-header flex align-items-center flex-between">
       <div class="msp-user-setting-title bold font-20">Nguời dùng</div>
 
-      <BaseButton @click="isShowFormAdd = true" label="Thêm mới">
+      <!-- Button thêm mới -->
+      <BaseButton @click="toggleInsertMultiUser(true)" label="Thêm mới">
         <div class="msp-icon-plus-white msp-icon-v2 msp-icon-24"></div>
       </BaseButton>
     </div>
@@ -11,15 +12,17 @@
     <div class="msp-user-setting-grid">
       <div class="msp-user-grid-func flex align-items-center flex-between">
         <div class="msp-user-grid-func-left flex">
+          <!-- Ô tìm kiếm -->
           <BaseInput
             @changeValue="handleSearch"
             placeholder="Tìm kiếm người dùng"
             :value="keyword"
-            style="width: 240px; margin-right: 12px"
+            id="msp-input-search-user"
           >
             <div class="msp-icon msp-icon-24 msp-icon-search m-r-8"></div>
           </BaseInput>
 
+          <!-- Filter theo role -->
           <BaseDropdown
             ref="roleFilter"
             @changeValue="handleFilterByRole"
@@ -36,6 +39,7 @@
           />
         </div>
 
+        <!-- Icon setting column -->
         <div class="msp-user-grid-func-right pst-relative">
           <div
             id="msp-icon-setting-column"
@@ -48,6 +52,7 @@
         </div>
       </div>
 
+      <!-- Table -->
       <div class="msp-user-grid-table pst-relative">
         <BaseTable
           rowID="UserID"
@@ -129,9 +134,7 @@
                 <div
                   :style="{ opacity: rowStart == 1 ? '.6' : '' }"
                   class="msp-icon-v2 msp-icon-24 msp-icon-arrow-left cursor-pointer"
-                  @click="
-                    rowStart != 1 && handleChangePageNumber(pageNumber - 1)
-                  "
+                  @click="rowStart != 1 && handleChangePageNumber(pageNumber - 1)"
                 ></div>
                 <div class="msp-user-paging-arrow-tooltip">Quay lại</div>
               </div>
@@ -140,10 +143,7 @@
                 <div
                   :style="{ opacity: rowEnd == totalRecord ? '.6' : '' }"
                   class="msp-icon-v2 msp-icon-24 msp-icon-arrow-right cursor-pointer"
-                  @click="
-                    rowEnd != totalRecord &&
-                      handleChangePageNumber(pageNumber + 1)
-                  "
+                  @click="rowEnd != totalRecord && handleChangePageNumber(pageNumber + 1)"
                 ></div>
                 <div class="msp-user-paging-arrow-tooltip">Tiếp tục</div>
               </div>
@@ -165,11 +165,16 @@
 
     <!-- Popup confirm xóa -->
     <PopupConfirmDeleteUser
-      v-if="nameUserDelete"
-      @closePopupDelete="nameUserDelete = ''"
+      v-if="userNameDelete"
+      @closePopupDelete="togglePopupConfirmDelete"
       @confirmDelete="handleDeleteUser"
-      :nameUserDelete="nameUserDelete"
-    />
+    >
+      <template #messageConfirmDelete>
+        <div class="msp-popup-delete-user-msg">
+          <span v-html="$t('message.confirmDelete',{fullName:userNameDelete})"></span>
+        </div>
+      </template>
+    </PopupConfirmDeleteUser>
 
     <!-- Popup Sửa -->
     <PopupEditUser
@@ -186,7 +191,7 @@
     <PopupInsertMultiUser
       v-if="isShowFormAdd"
       @saveFormInsertMulti="handleSaveFormAdd"
-      @closeFormAdd="isShowFormAdd = false"
+      @closeFormAdd="toggleInsertMultiUser(false)"
       @reloadDataAfterInsert="handleReloadAfterInsert"
     />
 
@@ -197,7 +202,7 @@
       @closeUserDetail="handleCloseUserDetail"
       @showFormEdit="isShowFormEdit = true"
       :userDetail="userDetail"
-      @deleteUser="nameUserDelete = userDetail.FullName"
+      @deleteUser="togglePopupConfirmDelete(userDetail.FullName)"
     />
   </div>
 </template>
@@ -206,12 +211,12 @@
 import BaseTable from "../../../components/BaseTable.vue";
 import { Resource } from "../../../Resource/Resource";
 import { CommonJS } from "../../../JS/CommonJS";
-import PopupSettingColumn from "../views/popups/PopupSettingColumn.vue";
-import PopupConfirmDeleteUser from "../views/popups/PopupConfirmDeleteUser.vue";
-import PopupEditUser from "../views/popups/PopupEditUser.vue";
-import PopupErrorForm from "../views/popups/PopupErrorForm.vue";
-import PopupDetailUser from "../views/popups/PopupDetailUser.vue";
-import PopupInsertMultiUser from "../views/popups/PopupInsertMultiUser.vue";
+import PopupSettingColumn from "../popups/PopupSettingColumn.vue";
+import PopupConfirmDeleteUser from "../popups/PopupConfirmDeleteUser.vue";
+import PopupEditUser from "../popups/PopupEditUser.vue";
+import PopupErrorForm from "../popups/PopupErrorForm.vue";
+import PopupDetailUser from "../popups/PopupDetailUser.vue";
+import PopupInsertMultiUser from "../popups/PopupInsertMultiUser.vue";
 import UserAPI from "../../../apis/UserAPI";
 import { TypeToast } from "../../../Enum/Enum";
 import { User } from "../../../Entities/User";
@@ -271,7 +276,7 @@ export default {
       //timer dùng làm delay tìm kiếm
       timerSearch: null,
       //Tên người dùng muốn xóa
-      nameUserDelete: "",
+      userNameDelete: "",
       //id của user đang được target
       idUserTarget: null,
       //Dữ liệu chi tiết người dùng
@@ -287,6 +292,11 @@ export default {
     await this.getUser();
     await this.$store.dispatch("getRole");
     this.loading = false;
+  },
+  computed:{
+    messageConfirmDeleteUser(){
+      return ``
+    }
   },
 
   methods: {
@@ -366,7 +376,7 @@ export default {
      */
     handleShowConfirmDeleteUser(userID) {
       const userDelete = this.users.find((user) => user.UserID == userID);
-      this.nameUserDelete = userDelete.FullName.FullName;
+      this.userNameDelete = userDelete.FullName.FullName;
       this.idUserTarget = userID;
     },
 
@@ -457,13 +467,20 @@ export default {
       this.loading = false;
     },
 
+    togglePopupConfirmDelete(userName = null){
+      if(userName == null)
+        this.userNameDelete = ""
+      else
+        this.userNameDelete = userName
+    },
+
     /**
      * Xóa user
      * Author : mhungwebdev (31/8/20222)
      */
     async handleDeleteUser() {
       try {
-        this.nameUserDelete = "";
+        this.userNameDelete = "";
         this.loading = true;
         await UserAPI.deleteUser(this.idUserTarget);
         await this.getUser();
@@ -647,6 +664,15 @@ export default {
       await this.getUser();
       this.isShowFormAdd = false;
     },
+
+    /**
+     * Ẩn hiện form insert multi user
+     * Author : mhungwebdev (5/9/2022)
+     * @param {*} state trạng thái gán cho form insert multi
+     */
+    toggleInsertMultiUser(state){
+      this.isShowFormAdd = state
+    }
   },
 };
 </script>

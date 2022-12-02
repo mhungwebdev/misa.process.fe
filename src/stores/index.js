@@ -22,11 +22,19 @@ export const store = createStore({
       departments:[],
       //Dữ liệu vị trí công việc
       jobPositions:[],
-      timerToast:null
+      timerToast:null,
+      locate:'vn',
     }
   },
 
   mutations: {
+    toggleLocate(state){
+      if(state.locate == 'vn')
+        state.locate = 'en'
+      else
+        state.locate = 'vn'
+    },
+
     /**
      * Show toast message
      * Author : mhungwebdev (31/8/2022)

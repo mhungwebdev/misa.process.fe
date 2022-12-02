@@ -34,13 +34,16 @@ export default {
     },
     //độ dài
     width: String,
+    //tabindex
     tabIndex: {
       type: Number,
       default: 0,
     },
     //độ cao
     height: String,
+    //border-radius
     borderRadius: String,
+    //border-color
     borderColor: String,
     //kiểu của input
     type: {

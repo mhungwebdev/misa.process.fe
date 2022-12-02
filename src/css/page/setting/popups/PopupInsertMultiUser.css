@@ -123,11 +123,11 @@
 .msp-user-form-add-row-icon{
     width: 24px;
     height: 24px;
-    -webkit-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
-    -moz-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
-    -ms-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
-    -o-mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
-    mask-image: url(../../../../../assets/images/Icon_Process_v4.svg);
+    -webkit-mask-image: url(../../../../assets/images/Icon_Process_v4.svg);
+    -moz-mask-image: url(../../../../assets/images/Icon_Process_v4.svg);
+    -ms-mask-image: url(../../../../assets/images/Icon_Process_v4.svg);
+    -o-mask-image: url(../../../../assets/images/Icon_Process_v4.svg);
+    mask-image: url(../../../../assets/images/Icon_Process_v4.svg);
     -webkit-mask-position: -168px 0;
     -moz-mask-position: -168px 0;
     -ms-mask-position: -168px 0;

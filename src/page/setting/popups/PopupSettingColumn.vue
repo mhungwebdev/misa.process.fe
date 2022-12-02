@@ -1,5 +1,5 @@
 <template>
-    <BasePopup @keydown="e => {if(e.key == 'Escape') $emit('closeEditColumn')}" id="msp-popup-setting-column">
+    <BasePopup @keydown.esc="$emit('closeEditColumn')" id="msp-popup-setting-column">
         <template #header>
             <div class="msp-popup-header flex align-items-center flex-between">
                 <div class="msp-setting-column-title">Tùy chỉnh cột</div>
@@ -15,7 +15,7 @@
             <div class="msp-setting-column">
                 <div>
                     <BaseInput 
-                        @changeValue="value => keyword = value" 
+                        @changeValue="handleChangeKeyword" 
                         class="msp-setting-column-input" 
                         :value="keyword"
                         placeholder="Tìm kiếm"
@@ -33,7 +33,7 @@
                         :itemCheckbox="fieldRender" 
                         fieldDisplay="fieldDisplay" 
                         :checked="fieldRender?.isRender"
-                        @keydown="e => {if(e.key =='Enter' && !fieldRender?.require) handleChangeStateColumn(fieldRender)}"
+                        @keydown.enter="!fieldRender?.require && handleChangeStateColumn(fieldRender)"
                         @changeChecked="handleChangeStateColumn" 
                     />
                 </div>
@@ -46,7 +46,7 @@
                 class="msp-button-cancel" 
                 type="outline"
                 label="Lấy lại mặc định" 
-                @keydown="e => {if(e.key == 'Enter') $emit('getDefault')}"
+                @keydown.enter="$emit('getDefault')"
             />
         </template>
 
@@ -55,19 +55,20 @@
                 @click="$emit('saveEditColumn')" 
                 class="msp-button-save-edit-column" 
                 label="Áp dụng" 
-                @keydown="e => {if(e.key == 'Enter') $emit('saveEditColumn')}"
+                @keydown.enter="$emit('saveEditColumn')"
             />
         </template>
     </BasePopup>
 </template>
 
 <script>
-import { CommonJS } from '../../../../JS/CommonJS';
+import { CommonJS } from '../../../JS/CommonJS';
     export default {
         data() {
         return {
             //list field setting
             listField: [],
+            //Từ khóa tìm kiếm column
             keyword:""
         }
     },
@@ -87,7 +88,6 @@ import { CommonJS } from '../../../../JS/CommonJS';
                 return this.listField.filter(item => {
                     const fieldDisplay = CommonJS.removeSymbol(item?.fieldDisplay.trim().toLowerCase())
                     const keyword = (CommonJS.removeSymbol(this.keyword.trim().toLowerCase()))
-                    console.log({fieldDisplay, keyword})
                     if(fieldDisplay.search(keyword) > -1)
                         return item
                 })
@@ -105,10 +105,19 @@ import { CommonJS } from '../../../../JS/CommonJS';
             const fieldChange = this.listField.find(frd => frd.fieldName == fieldRender.fieldName)
             fieldChange.isRender = !fieldChange.isRender
         },
+
+        /**
+         * Thay đổi keyword tìm kiếm column
+         * Author : mhungwebdev (27/8/2022)
+         * @param {*} value mới
+         */
+        handleChangeKeyword(value){
+            this.keyword = value
+        }
     }
 }
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupSettingColumn.css);
+@import url('../../../css/page/setting/popups/PopupSettingColumn.css');
 </style>

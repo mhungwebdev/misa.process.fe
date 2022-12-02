@@ -15,6 +15,9 @@ import BaseOverlay from "./components/BaseOverlay.vue";
 import BaseLoading from "./components/BaseLoading.vue";
 import BaseTagBox from "./components/BaseTagBox.vue";
 import { DxTooltip } from 'devextreme-vue/tooltip';
+import { languages } from './languages/languages';
+
+console.log(languages);
 
 const app = createApp(App)
 app.component("BaseButton",BaseButton)
@@ -31,4 +34,5 @@ app.component("DxTooltip",DxTooltip)
 
 app.use(store)
 app.use(router)
+app.use(languages)
 app.mount('#app')

@@ -45,6 +45,7 @@ export default {
         disabled: Boolean,
         //giá trị khởi tạo của checkbox
         checked:Boolean,
+        //tabindex
         tabIndex:{
             type: Number,
             default: 0,

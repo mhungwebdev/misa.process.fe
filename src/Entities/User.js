@@ -1,9 +1,36 @@
-import { CommonJS } from "../JS/CommonJS";
-import { Role } from "./Role";
 import { v4 as uuidv4 } from 'uuid';
-import { Resource } from "../Resource/Resource";
+import { CommonJS } from "../JS/CommonJS";
+import { ValidateGeneral } from "../JS/ValidateGeneral";
+import { Role } from "./Role";
 
+/**
+ * Lưu trữ thông tin user
+ * Author : mhungwebdev (5/9/2022)
+ */
 export class User {
+    ///Id của user
+    UserID
+    ///Mã nhân viên
+    EmployeeCode
+    ///Tên nhân viên
+    FullName
+    ///Email
+    Email
+    ///Màu avatar
+    AvatarColor
+    ///Tên phòng ban
+    DepartmentName
+    ///Tên vị trí công việc
+    JobPositionName
+    ///List role của user
+    Roles
+    ///Text trên avatar
+    AvatarText
+    ///Trạng thái hiển thị dạng text
+    ActiveStatusText
+    ///Màu dành cho trạng thái
+    ActiveStatusColor
+
     constructor(userDetail) {
         this.UserID = userDetail.UserID;
         this.EmployeeCode = userDetail.EmployeeCode;
@@ -13,7 +40,7 @@ export class User {
         this.DepartmentName = userDetail.DepartmentName;
         this.JobPositionName = userDetail.JobPositionName;
         const initRoles = userDetail.Roles.map(role => {
-            const newRole = new Role(role?.RoleID,role.RoleName)
+            const newRole = new Role(role?.RoleID, role.RoleName)
             newRole["UpdateMode"] = 0
             return newRole
         })
@@ -24,8 +51,33 @@ export class User {
     }
 }
 
+/**
+ * Lưu trữ thông tin cho user insert
+ * Author mhungwebdev (11/9/2022)
+ */
 export class UserInsert {
-    constructor(employeeCode){
+    ///Id người dùng
+    UserID
+    ///Mã nhân viên
+    EmployeeCode
+    /// Tên nhân viên
+    FullName
+    /// Email
+    Email
+    /// Màu avatar
+    AvatarColor
+    /// Id phòng ban
+    DepartmentID
+    /// Id vị trí công việc
+    JobPositionID
+    /// Tole của user
+    Roles
+    /// Trạng thái kiểu number
+    ActiveStatus
+    /// Đối tượng lưu trữ lỗi
+    ERROR
+
+    constructor(employeeCode) {
         this.UserID = uuidv4();
         this.EmployeeCode = employeeCode;
         this.FullName = "";
@@ -36,13 +88,13 @@ export class UserInsert {
         this.Roles = []
         this.ActiveStatus = null;
         this.ERROR = {
-            EmployeeCode:"",
-            FullName:"",
-            Email:"",
-            DepartmentID:"",
-            JobPositionID:"",
-            Roles:"",
-            ActiveStatus:"",
+            EmployeeCode: "",
+            FullName: "",
+            Email: "",
+            DepartmentID: "",
+            JobPositionID: "",
+            Roles: "",
+            ActiveStatus: "",
         }
     }
 
@@ -53,28 +105,15 @@ export class UserInsert {
      * @param {*} value dữ liệu của field
      * @returns true nếu thỏa mãn - false nếu ngược lại
      */
-    validate(fieldName){
+    validate(fieldName) {
         let isValid = true
-        if(fieldName != "Roles" && fieldName != "ActiveStatus"){
-            if(this[fieldName] == "" || this[fieldName] == null){
-                this.ERROR[fieldName] = Resource.emptyFieldRequire
-                isValid = false
-            }else{
-                if(fieldName == "Email" && !CommonJS.ValidateEmail(this[fieldName])){
-                    this.ERROR["Email"] = Resource.emailInvalid
-                    isValid = false
-                }
-            }
-        }else if(fieldName == "Roles"){
-            if(this[fieldName].length == 0){
-                this.ERROR[fieldName] = Resource.notChoseRole
-                isValid = false
-            }
-        }else if(fieldName == "ActiveStatus"){
-            if(this[fieldName] == null){
-                this.ERROR["ActiveStatus"] = Resource.emptyFieldRequire
-                isValid = false
-            }
+        if (fieldName != "Roles" && fieldName != "ActiveStatus") {
+            isValid = ValidateGeneral.validateRequired(this, fieldName, isValid);
+            isValid = ValidateGeneral.validateEmail(this, 'Email', isValid);
+        } else if (fieldName == "Roles") {
+            isValid = ValidateGeneral.validateArrayRequired(this, fieldName, isValid);
+        } else if (fieldName == "ActiveStatus") {
+            isValid = ValidateGeneral.validateFieldNotNull(this, fieldName, isValid);
         }
 
         return isValid

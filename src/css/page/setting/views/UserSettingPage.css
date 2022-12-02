@@ -161,3 +161,12 @@
 .msp-user-paging-info {
     min-width: 94px;
 }
+
+.msp-popup-delete-user-msg {
+    padding: 24px;
+}
+
+#msp-input-search-user {
+    width: 240px; 
+    margin-right: 12px
+}

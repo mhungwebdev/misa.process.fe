@@ -176,7 +176,7 @@
                         <div class="msp-user-form-add-row-text">Thêm dòng</div>
                     </div>
                 </div>
-                <BaseLoading v-if="loading || listUserInsert.length == 0" />
+                <BaseLoading v-if="loading" />
             </template>
 
             <template #button-left>
@@ -184,17 +184,17 @@
                     @keydown="handleKeydownButtonCancelFormAdd"
                     @click="handleCloseFormAdd" 
                     class="msp-button-cancel" type="outline"
-                    label="Hủy" 
+                    :label="$t('message.textCancelButton')" 
                     :tabIndex="listUserInsert.length * 7 + 2" 
                     />
             </template>
 
             <template #button-right>
                 <BaseButton 
-                    @keydown="e => {if(e.key =='Enter') handleSaveForm()}" 
+                    @keydown.enter="handleSaveForm" 
                     @click="handleSaveForm"
                     class="m-r-24" 
-                    label="Lưu" 
+                    :label="$t('message.textSaveForm')" 
                     :tabIndex="listUserInsert.length * 7 + 1" 
                 />
             </template>
@@ -203,10 +203,11 @@
         <!-- Popup lỗi form -->
         <PopupErrorForm 
             v-if="isShowPopupErrorForm" 
-            :errorMsg="Resource.errorForm"
+            :errorMsg="$t('message.errorForm')"
             @closeErrorForm="handleCloseErrorFormAdd" 
         />
 
+        <!-- Confirm close form insert multi -->
         <PopupConfirmCloseForm 
             v-if="isShowConfirmCloseForm" 
             @closePopup="isShowConfirmCloseForm = false"
@@ -218,11 +219,11 @@
 
 <script>
 import { nextTick } from "vue";
-import UserAPI from "../../../../apis/UserAPI";
-import { UserInsert } from "../../../../Entities/User";
-import { TypeToast } from "../../../../Enum/Enum";
-import { CommonJS } from "../../../../JS/CommonJS";
-import {Resource} from "../../../../Resource/Resource"
+import UserAPI from "../../../apis/UserAPI";
+import { UserInsert } from "../../../Entities/User";
+import { TypeToast } from "../../../Enum/Enum";
+import { CommonJS } from "../../../JS/CommonJS";
+import {Resource} from "../../../Resource/Resource"
 import PopupErrorForm from "./PopupErrorForm.vue";
 import PopupConfirmCloseForm from "./PopupConfirmCloseForm.vue";
 export default {
@@ -233,7 +234,9 @@ export default {
             listUserInsert: [],
             //Ẩn hiện popup error form
             isShowPopupErrorForm: false,
+            // loading form insert multi
             loading: false,
+            // Ẩn hiện popup confirm close form
             isShowConfirmCloseForm: false,
         };
     },
@@ -243,7 +246,9 @@ export default {
         };
     },
     async created() {
+        this.loading = true;
         await this.initFormInsertMulti();
+        this.loading = false;
     },
     methods: {
         /**
@@ -327,14 +332,12 @@ export default {
         async validateUser(fieldName, id) {
             try {
                 const userValidate = this.listUserInsert.find(user => user.UserID == id);
+                
                 if(userValidate){
                     let isValid = userValidate.validate(fieldName);
-                    if (fieldName == "EmployeeCode") {
-                        const checkExist = this.listUserInsert.find(user => user.EmployeeCode == userValidate.EmployeeCode && user.UserID != id);
-                        if (checkExist) {
-                            userValidate.ERROR["EmployeeCode"] = Resource.employeeCodeExist;
-                            isValid = false;
-                        }
+                    if (fieldName == "EmployeeCode" && this.checkEmployeeCode(userValidate.EmployeeCode,userValidate.UserID)) {
+                        userValidate.ERROR["EmployeeCode"] = Resource.employeeCodeExist;
+                        isValid = false;
                     }
                     return isValid;
                 }
@@ -357,15 +360,17 @@ export default {
         * Kiểm tra employee code đã tồn tại trong mảng chưa
         * Author : mhungwebdev (1/9/2022)
         * @param {*} employeeCode mã nhân viên muốn check
+        * @param {*} id của user muốn check
         * @returns true nếu đã tồn tại - false nếu chưa tồn tại
         */
-        checkEmployeeCode(employeeCode) {
-            const checkExist = this.listUserInsert.find(user => user.EmployeeCode == employeeCode);
+        checkEmployeeCode(employeeCode, id = null) {
+            const checkExist = this.listUserInsert.find(user => user.EmployeeCode == employeeCode && user.UserID != id);
             if (checkExist)
                 return true;
             else
                 return false;
         },
+
         /**
          * Thêm mới row
          * Author: mhungwebdev (1/9/2022)
@@ -378,6 +383,7 @@ export default {
                     newEmployeeCode = `NV-${CommonJS.getNumberFormEmployeeCode(newEmployeeCode) + 1}`;
                     checkExist = this.checkEmployeeCode(newEmployeeCode);
                 }
+
                 this.listUserInsert = [...this.listUserInsert, new UserInsert(newEmployeeCode)];
             }
             catch (e) {
@@ -456,13 +462,8 @@ export default {
         handleCloseErrorFormAdd() {
             try {
                 const fieldError = document.querySelector(".msp-border-field-error")
-                const inputError = fieldError.querySelector(".msp-input")
                 nextTick(() => {
-                    if (inputError)
-                        inputError.focus()
-                    else {
-                        fieldError.querySelector("input[tabindex]").focus()
-                    }
+                    fieldError.querySelector("input[tabindex]").focus()
                 })
                 this.isShowPopupErrorForm = false
             } catch (error) {
@@ -509,5 +510,5 @@ export default {
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupInsertMultiUser.css);
+@import url('../../../css/page/setting/popups/PopupInsertMultiUser.css');
 </style>

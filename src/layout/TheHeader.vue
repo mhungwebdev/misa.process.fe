@@ -43,10 +43,7 @@
         <div class="msp-icon-bell-bar">3</div>
       </div>
 
-      <div
-        @click="isExpanseAvatar = true"
-        class="msp-header-avatar-wrapper flex-center"
-      >
+      <div @click="changeLocate" class="msp-header-avatar-wrapper flex-center">
         <div class="msp-header-avatar cursor-pointer"></div>
       </div>
     </div>
@@ -84,16 +81,13 @@
         </div>
       </div>
     </div>
-
-    <BaseOverlay @click="handleOVerlayClick" v-if="isExpanseAvatar">
-      <BasePopup id="msp-avatar-expanse" :showButtonGr="false"> </BasePopup>
-    </BaseOverlay>
   </div>
 </template>
 
 <script>
 import { Resource } from "../Resource/Resource";
 import { TypeButton } from "../Enum/Enum";
+import { languages } from "../languages/languages";
 
 export default {
   data() {
@@ -125,10 +119,10 @@ export default {
       });
     },
 
-    handleOVerlayClick(e){
-      if(e.target.className != 'msp-popup-content flex-1')
-        this.isExpanseAvatar = false
-    }
+    changeLocate() {
+      if (this.$root.$i18n.locale == "en") this.$root.$i18n.locale = "vn";
+      else this.$root.$i18n.locale = "en";
+    },
   },
 };
 </script>

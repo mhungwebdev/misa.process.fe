@@ -49,7 +49,9 @@ export default {
     components: { DxTagBox },
     data() {
         return {
+            ///Ẩn hiện picker
             opened:false,
+            ///giá trị
             value:[]
         }
     },
@@ -64,15 +66,18 @@ export default {
             type: String,
             required: true,
         },
+        // độ rộng
         width: String || Number,
         //dữ liệu sẽ render
         data: {
             type: Array,
             required: true,
         },
+        //placeholder
         placeholder:String,
         //thông báo lỗi
         error:String,
+        //tabindex
         tabIndex:Number,
     },
     methods:{

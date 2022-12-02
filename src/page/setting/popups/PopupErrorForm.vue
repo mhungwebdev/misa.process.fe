@@ -9,7 +9,7 @@
             </template>
 
             <template #button-right>
-                <BaseButton @keydown="e => {if(e.key =='Enter') $emit('closeErrorForm')}" :tabIndex="0"
+                <BaseButton @keydown.enter="$emit('closeErrorForm')" :tabIndex="0"
                     @click="$emit('closeErrorForm')" class="m-r-8" label="Đóng" :focus="true" />
             </template>
         </BasePopup>
@@ -19,6 +19,7 @@
 <script>
 export default {
     props:{
+        //Thông báo lỗi
         errorMsg:{
             type: String,
             required: true
@@ -28,5 +29,5 @@ export default {
 </script>
 
 <style scoped>
-@import url(../../../../css/page/setting/views/popups/PopupErrorForm.css);
+@import url('../../../css/page/setting/popups/PopupErrorForm.css');
 </style>

@@ -44,6 +44,7 @@ export default {
             value:{},
             //Index của item đang được chọn
             currentIndex:null,
+            //Ẩn hiện picker
             opened:false
         }
     },
@@ -77,8 +78,11 @@ export default {
         },
         //Giá trị khởi tạo
         valueInit:Object,
+        // Thông báo lỗi
         error:String,
+        //tabindex
         tabIndex:Number,
+        // Cho phép search không
         searchEnabled:{
             type:Boolean,
             default:true
@@ -111,6 +115,7 @@ export default {
             const {itemIndex,itemData} = e
             this.currentIndex = itemIndex
             this.$emit('changeValue',itemData[this.fieldName])
+            // this.opened = false
         },
 
         /**
@@ -170,7 +175,7 @@ export default {
         handleInput(e){
             if(e.event.target.value == '')
                 this.$emit("changeValue","")
-        }
+        },
     }
 }
 </script>
