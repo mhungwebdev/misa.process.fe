@@ -25,8 +25,9 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /home/mahhu.asia/mahhu/
+        local-dir: dist/
+        server-dir: /
         timeout: 6000000
         protocol: ftps
         dry-run: true
+        dangerous-clean-slate: true
