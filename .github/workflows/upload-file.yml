@@ -1,5 +1,7 @@
 name: Upload File
 on: 
+  push:
+    types: ["master"]
   pull_request:
     types: ["master"]
 jobs:
