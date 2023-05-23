@@ -6,7 +6,7 @@ on:
     branches: ["master"]
 jobs:
   upload-file:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     name: Upload file
     steps:
       - shell: bash
