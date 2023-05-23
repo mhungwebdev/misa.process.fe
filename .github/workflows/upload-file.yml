@@ -1,9 +1,9 @@
 name: Upload File
 on: 
   push:
-    types: ["master"]
+    branches: ["master"]
   pull_request:
-    types: ["master"]
+    branches: ["master"]
 jobs:
   upload-file:
     runs-on: ubuntu-lastest
