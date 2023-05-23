@@ -26,4 +26,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: output-log-file
+          path: ./output.log
   
