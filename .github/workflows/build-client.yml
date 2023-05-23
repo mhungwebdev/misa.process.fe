@@ -27,4 +27,6 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: /home/mahhu.asia/mahhu/
-        timeout: 60000
+        timeout: 6000000
+        protocol: ftps
+        dry-run: true
